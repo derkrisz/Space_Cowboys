@@ -18,16 +18,30 @@ class Bounty
     sql = "INSERT INTO bounties
     (
       name, species, bounty_value, homeworld
-      )
-      VALUES (
-        $1, $2, $3, $4
-        )
-        RETURNING *
-        "
-        values = [@name, @species, @bounty_value, @homeworld]
-        db.prepare("save", sql)
-      @id = db.exec_prepared("save", values)[0]["id"].to_i
-      db.close
-    end
+    )
+    VALUES (
+      $1, $2, $3, $4
+    )
+    RETURNING *
+    "
+    values = [@name, @species, @bounty_value, @homeworld]
+    db.prepare("save", sql)
+    @id = db.exec_prepared("save", values)[0]["id"].to_i
+    db.close
+  end
+
+  def update
+    db = PG.connect( {dbname: 'bounties', host: 'localhost'} )
+    sql = "UPDATE bounties
+    SET
+    (name, species, bounty_value, homeworld) =
+    ($1, $2, $3, $4)
+    WHERE id = $5
+    "
+    values = [@name, @species, @bounty_value, @homeworld, @id]
+    db.prepare("my_update", sql)
+    db.exec_prepared("my_update", values)
+    db.close
+  end
 
 end

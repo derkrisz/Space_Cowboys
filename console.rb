@@ -27,8 +27,10 @@ bounty3 = Bounty.new(
 )
 
 
-bounty1.save
-bounty2.save
-bounty3.save
+# bounty1.save
+# bounty2.save
+# bounty3.save
+
+bount1.update 
 
 # p Bounty.all
