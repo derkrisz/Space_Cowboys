@@ -53,4 +53,12 @@ class Bounty
     db.close
   end
 
+  def self.name
+    db = PG.connect( {dbname: 'bounties', host: 'localhost'} )
+    sql = "SELECT name FROM bounties WHERE id = $1"
+    values = [@id]
+    db.prepare("name", sql)
+    db.exec_prepared("name", values)
+    db.close
+  end
 end

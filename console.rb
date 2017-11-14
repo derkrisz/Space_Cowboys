@@ -1,4 +1,5 @@
 require_relative('models/bounty_data')
+require('pry-byebug')
 
 bounty1 = Bounty.new(
   {
@@ -29,10 +30,14 @@ bounty3 = Bounty.new(
 
 # bounty1.save
 # bounty2.save
-# bounty3.save
+bounty3.save
 
 #bount1.update
 
 # bounty3.delete
+p bounty.name
 
 # p Bounty.all
+
+Binding.pry
+nil
