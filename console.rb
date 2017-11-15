@@ -30,14 +30,9 @@ bounty3 = Bounty.new(
 
 # bounty1.save
 # bounty2.save
-bounty3.save
+# bounty3.save
 
-#bount1.update
+#bounty1.update
 
 # bounty3.delete
-p bounty.name
-
-# p Bounty.all
-
-Binding.pry
-nil
+p Bounty.find(8)
